@@ -1,7 +1,8 @@
+// Checks if user is authenticated. If user is true, setState to passed user. User is through firebase's authentication.
 import React from "react";
 
-import AuthUserContext from "./context";
 import { withFirebase } from "../Firebase";
+import { AuthUserContext } from "./index";
 
 const withAuthentication = (Component) => {
   class WithAuthentication extends React.Component {
@@ -29,6 +30,7 @@ const withAuthentication = (Component) => {
 
     render() {
       const { authUser } = this.state;
+
       return (
         <AuthUserContext.Provider value={authUser}>
           <Component {...this.props} />

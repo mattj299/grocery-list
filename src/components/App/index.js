@@ -1,8 +1,7 @@
-// DO NOT UPLOAD TO GITHUB
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Navigation from "../Navigation";
-import LandingPage from "../Landing";
+import Footer from "../Footer";
 import SignUpPage from "../SignUp";
 import SignInPage from "../SignIn";
 import PasswordForgetPage from "../PasswordForget";
@@ -12,24 +11,31 @@ import AdminPage from "../Admin";
 
 import * as ROUTES from "../../constants/routes";
 import { withAuthentication } from "../Session";
+import { withFirebase } from "../Firebase";
 
-function App() {
+function App({ firebase }) {
+  // Signs user out when exits the page
+  window.addEventListener("beforeunload", async () => {
+    await firebase.doSignOut();
+  });
+
   return (
     <Router>
-      <div>
-        <Navigation />
-        <hr />
+      <div className="container">
+        <div className="no-footer-content">
+          <Navigation />
 
-        <Route exact path={ROUTES.LANDING} component={LandingPage} />
-        <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
-        <Route path={ROUTES.SIGN_IN} component={SignInPage} />
-        <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage} />
-        <Route path={ROUTES.HOME} component={HomePage} />
-        <Route path={ROUTES.ACCOUNT} component={AccountPage} />
-        <Route path={ROUTES.ADMIN} component={AdminPage} />
+          <Route exact path={ROUTES.SIGN_IN} component={SignInPage} />
+          <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
+          <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage} />
+          <Route path={ROUTES.HOME} component={HomePage} />
+          <Route path={ROUTES.ACCOUNT} component={AccountPage} />
+          <Route path={ROUTES.ADMIN} component={AdminPage} />
+        </div>
+        <Footer />
       </div>
     </Router>
   );
 }
 
-export default withAuthentication(App);
+export default withFirebase(withAuthentication(App));

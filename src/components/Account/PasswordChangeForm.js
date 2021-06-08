@@ -6,6 +6,7 @@ const INITIAL_STATE = {
   passwordOne: "",
   passwordTwo: "",
   error: null,
+  success: false,
 };
 
 class PasswordChangeForm extends Component {
@@ -21,10 +22,10 @@ class PasswordChangeForm extends Component {
     this.props.firebase
       .doPasswordUpdate(passwordOne)
       .then(() => {
-        this.setState({ ...INITIAL_STATE });
+        this.setState({ ...INITIAL_STATE, success: true });
       })
       .catch((error) => {
-        this.setState({ error });
+        this.setState({ error, success: false });
       });
 
     event.preventDefault();
@@ -35,18 +36,19 @@ class PasswordChangeForm extends Component {
   };
 
   render() {
-    const { passwordOne, passwordTwo, error } = this.state;
+    const { passwordOne, passwordTwo, error, success } = this.state;
 
     const isInvalid = passwordOne !== passwordTwo || passwordOne === "";
 
     return (
-      <form onSubmit={this.onSubmit}>
+      <form className="form" onSubmit={this.onSubmit}>
         <input
           name="passwordOne"
           value={passwordOne}
           onChange={this.onChange}
           type="password"
           placeholder="New Password"
+          className="form__input"
         />
         <input
           name="passwordTwo"
@@ -54,14 +56,31 @@ class PasswordChangeForm extends Component {
           onChange={this.onChange}
           type="password"
           placeholder="Confirm New Password"
+          className="form__input"
         />
-        <button disabled={isInvalid} type="submit">
+        <button
+          className={
+            isInvalid
+              ? "button form__button button--isInvalid"
+              : "button form__button"
+          }
+          disabled={isInvalid}
+          type="submit"
+        >
           Reset My Password
         </button>
 
         {error && <p>{error.message}</p>}
+        {success && <p>Successfully changed password!</p>}
       </form>
     );
   }
 }
 export default withFirebase(PasswordChangeForm);
+
+//
+// FIND OTHER LITTLE ERRORS THAT COULD POTENTIALLY BREAK THE SITE
+// IF FINISHED DON'T BE AFRAID TO SAY YOU'RE DONE
+// MAYBE TRY HOSTING THE SITE ON FIREBASE HOSTING, IMPLYING IT'S FREE
+// MAYBE HAVE A DELETE ACCOUNT SO EVERYTHING FROM THE ACCOUNT GETS DELETED
+//

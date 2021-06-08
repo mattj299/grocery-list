@@ -1,8 +1,9 @@
+// Checks if user is authenticated. If not then reroute to non authorized route. Else do nothing.
 import React from "react";
 import { withRouter } from "react-router-dom";
 import { compose } from "recompose";
 
-import AuthUserContext from "./context";
+import { AuthUserContext } from "./index";
 import { withFirebase } from "../Firebase";
 import * as ROUTES from "../../constants/routes";
 

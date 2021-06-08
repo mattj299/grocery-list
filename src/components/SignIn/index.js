@@ -1,15 +1,13 @@
 import React, { Component } from "react";
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 
-import { SignUpLink } from "../SignUp";
-import { PasswordForgetLink } from "../PasswordForget";
 import { withFirebase } from "../Firebase";
 import * as ROUTES from "../../constants/routes";
 
 function SignInPage() {
   return (
-    <div>
-      <h1>SignIn</h1>
+    <div className="sign-in-page page__main-div">
+      <h1 className="page-header">Sign In</h1>
       <SignInForm />
       <PasswordForgetLink />
       <SignUpLink />
@@ -55,13 +53,14 @@ class SignInFormBase extends Component {
     const isInvalid = password === "" || email === "";
 
     return (
-      <form onSubmit={this.onSubmit}>
+      <form className="form sign-in__form" onSubmit={this.onSubmit}>
         <input
           name="email"
           value={email}
           onChange={this.onChange}
           type="text"
           placeholder="Email Address"
+          className="form__input sign-in__form__input"
         />
         <input
           name="password"
@@ -69,8 +68,17 @@ class SignInFormBase extends Component {
           onChange={this.onChange}
           type="password"
           placeholder="Password"
+          className="form__input sign-in__form__input"
         />
-        <button disabled={isInvalid} type="submit">
+        <button
+          disabled={isInvalid}
+          className={
+            isInvalid
+              ? "button form__button sign-in-button button--isInvalid"
+              : "button form__button sign-in-button"
+          }
+          type="submit"
+        >
           Sign In
         </button>
 
@@ -79,6 +87,28 @@ class SignInFormBase extends Component {
     );
   }
 }
+
+function PasswordForgetLink() {
+  return (
+    <Link
+      className="button form__input pw-forget__button"
+      to={ROUTES.PASSWORD_FORGET}
+    >
+      Forgot Password?
+    </Link>
+  );
+}
+
+const SignUpLink = () => {
+  return (
+    <div className="sign-up-link__div">
+      <p className="sign-up-link__p">Don't have an account?</p>
+      <Link to={ROUTES.SIGN_UP} className="button sign-up__button">
+        Sign Up
+      </Link>
+    </div>
+  );
+};
 
 const SignInForm = withRouter(withFirebase(SignInFormBase));
 

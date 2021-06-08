@@ -1,4 +1,584 @@
+// 650px 900px 1400px
+
+// Global scss items
+// Mixins and variables
+%flex-all-centered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// Color scheme
+$primary-blue: #45a29e;
+$secondary-blue: #66fcf1;
+$light-gray: #c5c6c7;
+$dark-blue: #1f2833;
+$dark-black: #0b0c10;
+
+// Global section
 * {
+  box-sizing: border-box;
   padding: 0;
   margin: 0;
+  font-family: "Rubik", monospace;
+}
+
+body {
+  background-color: $dark-blue;
+  color: white;
+}
+
+a {
+  text-decoration: none;
+  color: unset;
+}
+
+li {
+  list-style: none;
+  color: unset;
+}
+
+// Custom scrollbar
+::-webkit-scrollbar {
+  width: 3px;
+}
+
+::-webkit-scrollbar-track {
+  background: $light-gray;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $dark-black;
+}
+
+// Forces footer to be on the bottom of screen. If change footer height then change value of 4em
+.no-footer-content {
+  min-height: calc(100vh - 4em);
+}
+
+@media (min-width: 1400px) {
+  .no-footer-content {
+    min-height: calc(100vh - 5em);
+  }
+}
+
+// Page section
+.page__main-div {
+  @extend %flex-all-centered;
+  flex-direction: column;
+}
+
+.page-header {
+  padding: 0 0 0.25em;
+  font-size: 2.1em;
+}
+
+.page__sub-header {
+  font-weight: 600;
+  padding: 0 0 1em;
+}
+
+.page__desc {
+  text-align: center;
+  padding: 0 0 1em;
+  font-weight: 100;
+}
+
+.left-section,
+.right-section {
+  width: 50%;
+  @extend %flex-all-centered;
+  flex-direction: column;
+}
+
+@media (min-width: 1400px) {
+  .page__main-div {
+    font-size: 1.25em;
+  }
+}
+
+.container {
+  padding: 0 1.5em;
+}
+
+@media (min-width: 650px) {
+  .container {
+    padding: 0 3em;
+  }
+}
+
+@media (min-width: 900px) {
+  .container {
+    padding: 0 5em;
+  }
+}
+
+@media (min-width: 1400px) {
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+}
+
+// Button section classes to make different buttons based on size and importance
+.button {
+  cursor: pointer;
+  background-color: unset;
+  color: $secondary-blue;
+  border: 1px solid $secondary-blue;
+  outline: none;
+  padding: 0.5em 2em;
+  margin: 0.5em 0;
+  transition: all 0.5s;
+}
+
+.button-color--reverse {
+  color: $dark-blue;
+  background-color: $secondary-blue;
+}
+
+.button:hover {
+  color: $dark-blue;
+  background-color: $secondary-blue;
+}
+
+.button--danger {
+  color: red;
+  border: 1px solid red;
+}
+
+.button--danger:hover {
+  color: white;
+  background-color: red;
+  border: 1px solid red;
+}
+
+.button--isInvalid {
+  color: white !important;
+  background-color: black !important;
+  border: unset !important;
+}
+
+// Form section
+.form {
+  @extend %flex-all-centered;
+  flex-direction: column;
+  width: 100%;
+}
+
+.form__input {
+  padding: 0.5em;
+  margin: 0 0 0.5em;
+  width: 100%;
+  max-width: 250px;
+}
+
+.form__button {
+  width: 100%;
+  max-width: 250px;
+  font-size: 1em;
+}
+
+@media (min-width: 1400px) {
+  .form__input {
+    font-size: 1em;
+    max-width: 300px;
+  }
+
+  .form__button {
+    max-width: 300px;
+  }
+}
+
+// Navigation section
+.nav {
+  @extend %flex-all-centered;
+  padding: 1em 0;
+  justify-content: space-between;
+
+  &-right {
+    display: none;
+  }
+
+  &-left {
+    z-index: 2;
+  }
+
+  &-open {
+    display: flex;
+    flex-direction: column;
+    z-index: 1;
+    background-color: $primary-blue;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    padding-top: 75px;
+  }
+
+  &-menu {
+    cursor: pointer;
+    padding: 0.5em;
+    font-size: 1.5em;
+    z-index: 999;
+  }
+
+  &__list-link {
+    color: unset;
+    text-align: center;
+    padding: 1em 0;
+    transition: all 0.5s;
+  }
+
+  &__list-link:hover {
+    background-color: $secondary-blue;
+    color: $dark-blue;
+  }
+
+  &-logo__link:hover {
+    background-color: unset !important;
+    color: unset !important;
+  }
+
+  &-logo__item {
+    position: relative;
+    padding: 0.5em 0;
+    color: $secondary-blue;
+    font-weight: 900;
+    font-size: 1.5em;
+  }
+
+  &__sign-out-button {
+    border: unset;
+    padding: 1.5em 0;
+    font-size: 0.9em;
+    margin: 0;
+  }
+}
+
+@media (min-width: 650px) {
+  .nav {
+    &-right {
+      display: flex;
+    }
+
+    &-menu {
+      display: none;
+    }
+
+    &__list-link {
+      padding: 1em;
+    }
+
+    &__sign-out-button {
+      border: 1px solid $secondary-blue;
+    }
+  }
+}
+
+@media (min-width: 900px) {
+  .nav {
+    &__list-link {
+      padding: 1em 2em;
+    }
+  }
+}
+
+@media (min-width: 1400px) {
+  .nav {
+    font-size: 1.25em;
+  }
+}
+
+// Sign In Section
+.sign-up {
+  &__form {
+    margin-bottom: 0.25em;
+  }
+  &__button {
+    width: 100%;
+    max-width: 250px;
+    @extend %flex-all-centered;
+  }
+}
+
+@media (min-width: 1400px) {
+  .sign-up__button {
+    max-width: 300px;
+  }
+}
+
+// Sign Up Section
+
+.sign-up-link {
+  &__div {
+    @extend %flex-all-centered;
+    flex-direction: column;
+    width: 100%;
+  }
+  &__p {
+    margin: 1em 0 1.25em;
+  }
+}
+
+// Password Forget Section
+.pw-forget__button {
+  border: none;
+  text-align: center;
+  margin: 0;
+}
+
+// Home Section
+.home-page {
+  flex-direction: unset !important;
+}
+
+.home-user__div__img {
+  height: 300px;
+  width: 300px;
+  background-size: contain;
+  background-position: center top;
+  background-repeat: no-repeat;
+  display: flex;
+  margin: 0 auto;
+
+  &-default {
+    height: 150px;
+    width: 150px;
+    display: flex;
+    margin: 0 auto;
+  }
+}
+
+.home-form-file__input {
+  cursor: pointer;
+}
+
+.uploading__p {
+  padding: 0.5em 0;
+}
+
+// Account Section, uses all pre-existing code
+
+// Admin Section
+.admin-page {
+  font-size: 1em;
+}
+
+.admin__list {
+  @extend %flex-all-centered;
+  flex-wrap: wrap;
+}
+
+.admin__list-item {
+  @extend %flex-all-centered;
+  flex-direction: column;
+  padding: 0.5em;
+  align-self: stretch;
+  justify-content: space-between;
+  width: 50%;
+}
+
+.admin-user__div-img {
+  height: 140px;
+  width: 140px;
+  position: relative;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  transition: transform 0.5s;
+}
+
+.admin-user__div-img:hover {
+  transform: scale(1.05);
+}
+
+.admin-user__img--favorite {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  color: red;
+}
+
+.admin__button--remove {
+  width: 100%;
+  max-width: 140px;
+  font-size: 1em;
+}
+
+.no-images {
+  padding: 1em;
+  font-size: 1em;
+}
+
+// Gallery in Admin Section
+.overlay-gallery {
+  display: none;
+}
+
+.overlay-gallery--active {
+  @extend %flex-all-centered;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba($color: $dark-black, $alpha: 1);
+  z-index: 999;
+}
+
+.overlay-share-popup {
+  display: none;
+}
+
+.overlay-share-popup--active {
+  position: absolute;
+  @extend %flex-all-centered;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba($color: #000000, $alpha: 0.8);
+}
+
+.overlay-share-content {
+  @extend %flex-all-centered;
+  flex-direction: column;
+  padding: 1.5em 1em;
+  margin: 0 1em;
+  background-color: $primary-blue;
+  border-radius: 1em;
+  max-width: 500px;
+}
+
+.overlay-share__p {
+  margin-bottom: 1em;
+}
+
+.overlay-share__link {
+  color: rgb(20, 20, 255);
+  border-bottom: 1px solid rgb(20, 20, 255);
+  font-size: 0.75em;
+  word-break: break-all;
+  margin: 0 0 1em;
+}
+
+.overlay-image {
+  width: 100vw;
+  height: 70vh;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.overlay-icons {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  top: -80px;
+  font-size: 1.75em;
+  width: 100%;
+  max-width: 90vw;
+  padding: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  &--right,
+  &--left {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.overlay-icon {
+  cursor: pointer;
+  margin: 0 5px;
+  transition: background-color 0.5s;
+  box-sizing: unset;
+  padding: 10px;
+  border-radius: 100%;
+}
+
+.overlay-icon:hover {
+  background-color: rgba($color: $light-gray, $alpha: 0.2);
+}
+
+.overlay-icon:last-child {
+  cursor: pointer;
+  margin-right: 0px;
+}
+
+.trash-icon {
+  transform: translateY(-10%);
+}
+
+.favorite-icon {
+  transition: color 0.5s;
+}
+
+.is-favorite {
+  color: red;
+}
+
+@media (min-width: 400px) {
+  .admin__list-item {
+    width: unset;
+  }
+
+  .admin-user__div-img {
+    height: 150px;
+    width: 150px;
+  }
+
+  .admin__button--remove {
+    max-width: 150px;
+  }
+
+  .overlay-image {
+    width: 100vw;
+    height: 75vh;
+  }
+}
+
+@media (min-width: 750px) {
+  .admin-user__div-img {
+    height: 200px;
+    width: 200px;
+  }
+  .admin__button--remove {
+    max-width: 200px;
+  }
+
+  .overlay-icons {
+    font-size: 2em;
+  }
+}
+
+@media (min-width: 1400px) {
+  .admin-user__div-img {
+    height: 250px;
+    width: 250px;
+  }
+  .admin__button--remove {
+    max-width: 250px;
+  }
+}
+
+// Footer Section (If footer height changes then change no-footer-content container as well)
+.footer {
+  @extend %flex-all-centered;
+  position: relative;
+  width: 100%;
+  bottom: 0;
+  height: 4em;
+
+  &-content {
+    font-size: 0.75em;
+  }
+}
+
+@media (min-width: 1400px) {
+  .footer {
+    font-size: 1.25em;
+  }
 }

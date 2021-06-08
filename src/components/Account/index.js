@@ -1,25 +1,36 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import { AuthUserContext, withAuthorization } from "../Session";
-import { PasswordForgetForm } from "../PasswordForget";
-import PasswordChangeForm from "../PasswordChange";
+import { withFirebase } from "../Firebase";
 
-function AccountPage() {
+import PasswordChangeForm from "./PasswordChangeForm";
+import DeleteUserForm from "./DeleteUserForm";
+
+function AccountPage(props) {
+  const authUser = useContext(AuthUserContext);
+
   return (
-    <AuthUserContext.Consumer>
-      {(authUser) => {
-        return (
-          <div>
-            <h1>Account: {authUser.email}</h1>
-            <PasswordForgetForm />
-            <PasswordChangeForm />
-          </div>
-        );
-      }}
-    </AuthUserContext.Consumer>
+    <div className="page__main-div">
+      <h1 className="page-header">Account Page</h1>
+      <p className="page__desc">Account: {authUser.email}</p>
+
+      <p className="page__desc">Change Password?</p>
+      <PasswordChangeForm />
+
+      <h1 className="page-header">Delete Account!</h1>
+      <p className="page__desc">
+        Deleting account will delete <strong>everything</strong> to do with the
+        account! There is no going back.
+      </p>
+
+      <p className="page__desc">
+        Enter your email and re-enter email to confirm deletion of account.
+      </p>
+      <DeleteUserForm />
+    </div>
   );
 }
 
 const condition = (authUser) => authUser != null;
 
-export default withAuthorization(condition)(AccountPage);
+export default withFirebase(withAuthorization(condition)(AccountPage));
