@@ -30,3 +30,6 @@ yarn-error.log*
 firebase.json
 storage.rules
 database.rules.json
+
+# this file keeps popping up and messing with git changes
+.eslintcache

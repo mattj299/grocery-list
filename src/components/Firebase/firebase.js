@@ -40,9 +40,16 @@ class Firebase {
   accessCurrentUser = () => this.auth.currentUser;
 
   // *** Database API ***
+  // ** Accessing users from database **
   user = (uid) => this.db.ref(`users/${uid}`);
 
   users = () => this.db.ref("users");
+
+  // ** CRUD functionality to database **
+  updateGroceryToDatabase = (uid, item) => this.user(uid).update({ item });
+
+  deleteGroceryItemFromDatabase = (uid, item) =>
+    this.user(uid).update({ item });
 
   // *** Storage API ***
   addImageToUserStorage = (userUid, imageAsFile) =>

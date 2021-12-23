@@ -10,7 +10,7 @@ function AccountPage(props) {
   const authUser = useContext(AuthUserContext);
 
   return (
-    <div className="page__main-div">
+    <div className="account-page">
       <h1 className="page-header">Account Page</h1>
       <p className="page__desc">Account: {authUser.email}</p>
 

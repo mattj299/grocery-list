@@ -64,9 +64,8 @@ function NavigationAuth({ openNav, toggleNav }) {
         {openNav ? <AiOutlineClose /> : <AiOutlineMenu />}
       </div>
       <div className={openNav ? "nav-right nav-open" : "nav-right"}>
-        <ListItem route={ROUTES.HOME} text="Home" />
         <ListItem route={ROUTES.ACCOUNT} text="Account" />
-        <ListItem route={ROUTES.ADMIN} text="Admin" />
+        <ListItem route={ROUTES.HOME} text="Home Grocery" />
         <SignOutButton />
       </div>
     </ul>
@@ -110,13 +109,14 @@ function SignOutButton() {
 
 function Logo() {
   const closeNav = useContext(CloseNavGLobalContext);
+  const authUser = useContext(AuthUserContext);
   return (
     <Link
-      to={ROUTES.HOME}
+      to={authUser ? ROUTES.HOME : ROUTES.SIGN_IN}
       className="nav__list-link nav-logo__link"
       onClick={closeNav}
     >
-      <li className="nav__list-item nav-logo__item">Photo Library</li>
+      <li className="nav__list-item nav-logo__item">Grocery List</li>
     </Link>
   );
 }

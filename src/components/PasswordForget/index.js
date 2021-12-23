@@ -5,13 +5,15 @@ import { withFirebase } from "../Firebase";
 function PasswordForgetPage() {
   return (
     <div className="page__main-div">
-      <h1 className="page-header">Password Forget</h1>
-      <h4 className="page__sub-header">Trouble logging in?</h4>
-      <p className="page__desc">
-        Enter your email address and we'll send you
-        <br></br> an email to get you back into your account!
-      </p>
-      <PasswordForgetForm />
+      <div className="page-div-content">
+        <h1 className="page-header">Password Forget</h1>
+        <h4 className="page__sub-header">Trouble logging in?</h4>
+        <p className="page__desc">
+          Enter your email address and we'll send you
+          <br></br> an email to get you back into your account!
+        </p>
+        <PasswordForgetForm />
+      </div>
     </div>
   );
 }

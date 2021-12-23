@@ -7,9 +7,11 @@ import * as ROUTES from "../../constants/routes";
 const SignUpPage = () => {
   return (
     <div className="page__main-div">
-      <h1 className="page-header">Sign Up</h1>
-      <p className="page__desc">Must fill out all fields!</p>
-      <SignUpForm />
+      <div className="page-div-content">
+        <h1 className="page-header">Sign Up</h1>
+        <p className="page__desc">Must fill out all fields!</p>
+        <SignUpForm />
+      </div>
     </div>
   );
 };

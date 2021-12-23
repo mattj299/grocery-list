@@ -7,10 +7,12 @@ import * as ROUTES from "../../constants/routes";
 function SignInPage() {
   return (
     <div className="sign-in-page page__main-div">
-      <h1 className="page-header">Sign In</h1>
-      <SignInForm />
-      <PasswordForgetLink />
-      <SignUpLink />
+      <div className="page-div-content">
+        <h1 className="page-header">Sign In</h1>
+        <SignInForm />
+        <PasswordForgetLink />
+        <SignUpLink />
+      </div>
     </div>
   );
 }
@@ -82,7 +84,7 @@ class SignInFormBase extends Component {
           Sign In
         </button>
 
-        {error && <p>{error.message}</p>}
+        {error && <p style={{ textAlign: "center" }}>{error.message}</p>}
       </form>
     );
   }
@@ -90,10 +92,7 @@ class SignInFormBase extends Component {
 
 function PasswordForgetLink() {
   return (
-    <Link
-      className="button form__input pw-forget__button"
-      to={ROUTES.PASSWORD_FORGET}
-    >
+    <Link className="button pw-forget__button" to={ROUTES.PASSWORD_FORGET}>
       Forgot Password?
     </Link>
   );
