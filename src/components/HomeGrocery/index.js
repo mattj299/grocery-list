@@ -354,7 +354,7 @@ function HomeGroceryForm(props) {
                       </div>
 
                       <div className="grocery-list-inputs-labels">
-                        <h5 className="grocery-list-input-label">Food</h5>
+                        <h5 className="grocery-list-input-label">Item</h5>
                         <h5 className="grocery-list-input-label">Amount</h5>
                       </div>
 
