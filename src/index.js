@@ -9,7 +9,7 @@ import Firebase, { FirebaseContext } from "./components/Firebase";
 
 ReactDOM.render(
   <FirebaseContext.Provider value={new Firebase()}>
-    <Router>
+    <Router basename="/grocery-list">
       <App />
     </Router>
   </FirebaseContext.Provider>,
