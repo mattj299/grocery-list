@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/grocery-list/static/css/main.93b0c2ca.chunk.css",
+    "main.js": "/grocery-list/static/js/main.f1e50c50.chunk.js",
+    "main.js.map": "/grocery-list/static/js/main.f1e50c50.chunk.js.map",
+    "runtime-main.js": "/grocery-list/static/js/runtime-main.064b0353.js",
+    "runtime-main.js.map": "/grocery-list/static/js/runtime-main.064b0353.js.map",
+    "static/css/2.791ba69d.chunk.css": "/grocery-list/static/css/2.791ba69d.chunk.css",
+    "static/js/2.8630390d.chunk.js": "/grocery-list/static/js/2.8630390d.chunk.js",
+    "static/js/2.8630390d.chunk.js.map": "/grocery-list/static/js/2.8630390d.chunk.js.map",
+    "index.html": "/grocery-list/index.html",
+    "static/css/2.791ba69d.chunk.css.map": "/grocery-list/static/css/2.791ba69d.chunk.css.map",
+    "static/css/main.93b0c2ca.chunk.css.map": "/grocery-list/static/css/main.93b0c2ca.chunk.css.map",
+    "static/js/2.8630390d.chunk.js.LICENSE.txt": "/grocery-list/static/js/2.8630390d.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/grocery-list/static/media/bgSignInImg.7d023ead.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.064b0353.js",
+    "static/css/2.791ba69d.chunk.css",
+    "static/js/2.8630390d.chunk.js",
+    "static/css/main.93b0c2ca.chunk.css",
+    "static/js/main.f1e50c50.chunk.js"
+  ]
+}
