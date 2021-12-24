@@ -1,13 +1,21 @@
-in order to create real readme just look at photo-library readme then alter for this one
+# Important
 
-AFTER COMPLETELY DONE WITH SITE
+This project is a grocery list that holds all grocery lists created by user.
+This is just a personal project made.
 
-go back to MERN stack application and change the loading. looks stupid and unprofessional when saying 'either loading or no posts'
-figure out how to either have it loading or have no posts separately not together
+## Built using Firebase and React
 
-create one advertising your "personal training" or "nutrition" whatever you want or both but something about you or sometihng that's actually fucking useful and not just little projects that don't necessarily do anything for you but simply add projects to your fucking repository which look like shit btw just wanted to add that.
+built using create-react-app and I am utilizing many different things firebase has to offer such as their
+authentication and their realtime database to save the data being inputted.
 
-IDEA
+## Project use
 
-go on dribble and copy a design for your own site first just copy the straight design as well as word for word and color for color but once done
-take a design and make a website yourself but using only their design
+You can use this project to save grocery lists.
+You can delete the lists whenever you would like to as well as alter at your convenience.
+
+This is being used with firebase's free data plan.
+
+## How to start locally
+
+Clone the repository, install all necessities in order to run react on your local machine, use your own firebase credentials, and run the application.
+You might need a small amount of knowledge of firebase in order to get this working.
